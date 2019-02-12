@@ -1,4 +1,4 @@
-package com.techmonad.akka.http
+package com.techmonad.rest
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
