@@ -29,14 +29,24 @@ object RestService {
       path("person" / "getAll") {
         get {
           complete {
-            val persons = FakePersonDB.getAll()
-            write(persons)
+            val persons: List[Person] = FakePersonDB.getAll()
+            write(persons) // person list convert json and return as response
           }
         }
       } ~
+        path("person" / "getByName") {
+          get {
+            parameters('name.as[String]) { name => // URL parameter
+              complete {
+                val persons: List[Person] = FakePersonDB.getByName(name)
+                write(persons) // person list convert json and return as response
+              }
+            }
+          }
+        } ~
         path("person" / "save") {
           post {
-            entity(as[String]) {
+            entity(as[String]) { // post body parameter
               personJson =>
                 complete {
                   val person = parse(personJson).extract[Person]
@@ -66,6 +76,8 @@ object FakePersonDB {
   private var persons = List[Person](Person("Bob", "bob@gmail.com", 32))
 
   def getAll(): List[Person] = persons
+
+  def getByName(name: String): List[Person] = persons.filter(_.name.toLowerCase == name)
 
   def save(person: Person): Unit = {
     persons = persons :+ person
