@@ -6,7 +6,7 @@ scalaVersion := "2.13.5"
 
 libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-http" % "10.0.15",
-  "org.json4s" %% "json4s-native" % "3.5.5",
+  "org.json4s" %% "json4s-native" % "3.6.11",
   "com.typesafe.akka" %% "akka-http-testkit" % "10.0.15" % Test
 )
         
