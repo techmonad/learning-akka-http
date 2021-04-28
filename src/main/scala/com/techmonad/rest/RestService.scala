@@ -62,7 +62,7 @@ object RestService {
       * Start Rest service on port 8000
       */
     val port = 8000
-    Http().bindAndHandle(route, "localhost", port)
+    Http().newServerAt("localhost", port).bindFlow(route)
 
     println(s"Rest service is running on $port")
 
