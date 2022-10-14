@@ -2,7 +2,7 @@ name := "learning-akka-http"
 
 version := "0.1"
 
-scalaVersion := "2.13.5"
+scalaVersion := "2.13.10"
 
 libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-http" % "10.2.4",
